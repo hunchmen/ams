@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Student {
 	
 	@Id
-	private int id;
+	private Long id;
 	
 	@Column(name = "FIRST_NAME", columnDefinition = "VARCHAR(150)" , nullable = true)
 	private String firstName;
@@ -36,7 +36,7 @@ public class Student {
 		
 	}
 	
-	public Student(int id, String firstName, String lastName, String middleName, int age, String gender) {
+	public Student(Long id, String firstName, String lastName, String middleName, int age, String gender) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -47,11 +47,11 @@ public class Student {
 	}
 	
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
