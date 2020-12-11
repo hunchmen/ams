@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -50,6 +51,18 @@ public class AmsRepositoryImpl implements AmsRepository{
 	public Student findStudentById(Long id) {
 		LOGGER.info("AMS REPOSITORY : FIND STUDENT BY ID");
 		return entityManager.find(Student.class, id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteStudentById(Long id) {
+		LOGGER.info("AMS REPOSITORY : DELETE STUDENT BY ID");
+		
+		String queryString = "DELETE FROM Student s WHERE s.id = :id";
+		Query query = entityManager.createQuery(queryString)
+			.setParameter("id", id);
+		
+		query.executeUpdate();
 	}
 	
 }

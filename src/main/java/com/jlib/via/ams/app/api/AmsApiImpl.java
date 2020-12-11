@@ -48,7 +48,7 @@ public class AmsApiImpl implements AmsApi{
 
 	@Override
 	@RequestMapping(path = "/addNewStudent", method=RequestMethod.POST)
-	@ApiOperation(value = "Get all student")
+	@ApiOperation(value = "Add new student")
 	@ApiResponses({@ApiResponse(code = 404, message = "API add new student not found")})
 	public ResponseEntity<Student> addStudent(@RequestBody Student student) {
 		LOGGER.info("AMS-API : ADD NEW STUDENT");
@@ -59,13 +59,22 @@ public class AmsApiImpl implements AmsApi{
 
 	@Override
 	@RequestMapping(path = "/findStudentById/{id}", method=RequestMethod.POST)
-	@ApiOperation(value = "Get all student")
+	@ApiOperation(value = "Find Student by id")
 	@ApiResponses({@ApiResponse(code = 404, message = "API add new student not found")})
 	public ResponseEntity<Student> findStudentById(@PathVariable Long id) {
 		LOGGER.info("AMS-API : FIND STUDENT BY ID");
 		
 		Student student = amsService.findStudentById(id);
 		return new ResponseEntity<>(student, HttpStatus.OK);
+	}
+
+	@Override
+	@RequestMapping(path = "/deleteStudentById/{id}", method=RequestMethod.DELETE)
+	@ApiOperation(value = "Delete student by id")
+	@ApiResponses({@ApiResponse(code = 404, message = "API Delete Student by Id not found")})
+	public void deleteStudentById(Long id) {
+		LOGGER.info("AMS-API : DELETE STUDENT BY ID");
+		amsService.deleteStudentById(id);;
 	}
 
 }

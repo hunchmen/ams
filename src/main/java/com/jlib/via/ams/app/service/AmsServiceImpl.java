@@ -41,4 +41,10 @@ public class AmsServiceImpl implements AmsService{
 		return amsRepository.findStudentById(id);
 	}
 
+	@Override
+	public void deleteStudentById(Long id) {
+		LOGGER.info("AMS SERVICE: DELETE STUDENT BY ID");
+		amsRepository.deleteStudentById(id);
+	}
+
 }

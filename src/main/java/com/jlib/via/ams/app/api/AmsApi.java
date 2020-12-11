@@ -14,4 +14,6 @@ public interface AmsApi {
 
 	public ResponseEntity<Student> findStudentById(Long id);
 	
+	public void deleteStudentById(Long id);
+	
 }
