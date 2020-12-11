@@ -12,4 +12,6 @@ public interface AmsRepository{
 	public Student findStudentById(Long id);
 	
 	public void deleteStudentById(Long id);
+	
+	public void updateStudent(Student student);
 }

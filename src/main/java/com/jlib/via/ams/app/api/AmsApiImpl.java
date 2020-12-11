@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jlib.via.ams.app.domain.Student;
-import com.jlib.via.ams.app.repository.AmsRepositoryImpl;
 import com.jlib.via.ams.app.service.AmsService;
 
 import io.swagger.annotations.ApiOperation;
@@ -72,9 +71,19 @@ public class AmsApiImpl implements AmsApi{
 	@RequestMapping(path = "/deleteStudentById/{id}", method=RequestMethod.DELETE)
 	@ApiOperation(value = "Delete student by id")
 	@ApiResponses({@ApiResponse(code = 404, message = "API Delete Student by Id not found")})
-	public void deleteStudentById(Long id) {
+	public void deleteStudentById(@PathVariable Long id) {
 		LOGGER.info("AMS-API : DELETE STUDENT BY ID");
 		amsService.deleteStudentById(id);;
+	}
+
+	@Override
+	@RequestMapping(path = "/updateStudent", method = RequestMethod.PUT)
+	@ApiOperation(value = "Update student details")
+	@ApiResponses({@ApiResponse(code = 404, message = "API Update Student details not found")})
+	public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
+		LOGGER.info("AMS-API : UPDATE STUDENT");
+		amsService.updateStudent(student);
+		return new ResponseEntity<Student>(student, HttpStatus.OK);
 	}
 
 }

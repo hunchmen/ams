@@ -47,4 +47,10 @@ public class AmsServiceImpl implements AmsService{
 		amsRepository.deleteStudentById(id);
 	}
 
+	@Override
+	public void updateStudent(Student student) {
+		LOGGER.info("AMS SERVICE : UPDATE STUDENT");
+		amsRepository.updateStudent(student);
+	}
+
 }

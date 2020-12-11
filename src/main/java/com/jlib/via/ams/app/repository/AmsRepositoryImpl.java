@@ -64,5 +64,26 @@ public class AmsRepositoryImpl implements AmsRepository{
 		
 		query.executeUpdate();
 	}
+
+	@Override
+	@Transactional
+	public void updateStudent(Student student) {
+		LOGGER.info("AMS REPOSITORY : UPDATE STUDENT DETAILS");
+		
+		String queryString = 
+				"UPDATE Student s SET s.firstName = :firstName, s.lastName = :lastName, "
+				+ "s.middleName = :middleName, s.gender = :gender, s.age = :age "
+				+ "WHERE s.id = :id";
+		
+		Query query = entityManager.createQuery(queryString)
+				.setParameter("id", student.getId())
+				.setParameter("firstName", student.getFirstName())
+				.setParameter("lastName", student.getLastName())
+				.setParameter("middleName", student.getMiddleName())
+				.setParameter("gender", student.getGender())
+				.setParameter("age", student.getAge());
+
+		query.executeUpdate();
+	}
 	
 }
