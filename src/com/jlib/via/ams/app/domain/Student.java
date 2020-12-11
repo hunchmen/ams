@@ -26,7 +26,7 @@ public class Student {
 	@Column(name = "MIDDLE_NAME", columnDefinition = "VARCHAR(150)" , nullable = true)
 	private String middleName;
 	
-	@Column(name = "AGE", columnDefinition = "NUMERIC(2,0)", nullable = true )
+	@Column(name = "AGE", columnDefinition = "INTEGER", nullable = true )
 	private int age;
 	
 	@Column(name = "GENDER", columnDefinition = "VARCHAR(100)" , nullable = true)
