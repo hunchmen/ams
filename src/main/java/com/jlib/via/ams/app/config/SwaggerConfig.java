@@ -2,6 +2,7 @@ package com.jlib.via.ams.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -22,8 +23,8 @@ public class SwaggerConfig {
 	public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
           .select()                                  
-          .apis(RequestHandlerSelectors.any())              
-          .paths(PathSelectors.any())                          
+          .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))              
+          .paths(PathSelectors.any())
           .build();                                           
     }
 
